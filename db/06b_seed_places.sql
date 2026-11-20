@@ -126,6 +126,20 @@ JOIN   interest_category ic ON ic.slug = trim(split_part(c, ':', 1));
 
 DROP TABLE stg_place;
 
+-- Populate image URLs for Puducherry demo places
+UPDATE place SET image_url = CASE name
+    WHEN 'Paradise Beach Puducherry' THEN '/images/places/paradise_beach.jpg'
+    WHEN 'Promenade Beach' THEN '/images/places/promenade_beach.jpg'
+    WHEN 'Arikamedu' THEN '/images/places/arikamedu.jpg'
+    WHEN 'Immaculate Conception Cathedral' THEN '/images/places/immaculate_conception.jpg'
+    WHEN 'Manakula Vinayagar Temple' THEN '/images/places/manakula_vinayagar.jpg'
+    WHEN 'Sri Aurobindo Ashram' THEN '/images/places/aurobindo_ashram.jpg'
+    WHEN 'Our Lady of Angels Church' THEN '/images/places/our_lady_of_angels.jpg'
+    WHEN 'Pondicherry Museum' THEN '/images/places/pondicherry_museum.jpg'
+    WHEN 'Matrimandir Auroville' THEN '/images/places/matrimandir.jpg'
+END
+WHERE destination_id IN (SELECT destination_id FROM destination WHERE state = 'Puducherry');
+
 -- =====================================================================
 --  Sanity check:
 --      SELECT d.name, count(*) FROM place p JOIN destination d USING (destination_id)
