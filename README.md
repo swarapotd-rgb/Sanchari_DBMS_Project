@@ -2,8 +2,7 @@
 
 **A travel planner for South India that checks whether your plan can actually be done.**
 
-DBMS Experiential Learning, Level 3 project, 5th semester, PES University.
-Instructor: Dr. Nagasundari S
+DBMS Experiential Learning, 5th semester, PES University.
 
 ---
 
